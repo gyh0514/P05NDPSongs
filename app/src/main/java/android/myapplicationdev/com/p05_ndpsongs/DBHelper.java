@@ -98,7 +98,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return result;
     }
     // Filtered Selection
-    public ArrayList<Song> getAllSongs(String keyword) {
+    public ArrayList<Song> getAllSongsFiltered(String keyword) {
         ArrayList<Song> songs = new ArrayList<Song>();
 
         SQLiteDatabase db = this.getReadableDatabase();

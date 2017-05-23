@@ -15,7 +15,7 @@ public class SecondActivity extends AppCompatActivity {
     Button btn5stars;
     ListView lv;
     SongAdapter aa;
-    ArrayList<String> al;
+    //ArrayList<String> al;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class SecondActivity extends AppCompatActivity {
 
         lv = (ListView)findViewById(R.id.lv);
         btn5stars = (Button)findViewById(R.id.btn5stars);
-        al = new ArrayList<String>();
+        //al = new ArrayList<String>();
 
 
         final DBHelper dbh = new DBHelper(SecondActivity.this);

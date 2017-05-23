@@ -31,10 +31,10 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String createNoteTableSql = "CREATE TABLE " + TABLE_SONG + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + COLUMN_TITLE
-                + COLUMN_SINGER
-                + COLUMN_YEAR
-                + COLUMN_STARS + " TEXT ) ";
+                + COLUMN_TITLE + " TEXT "
+                + COLUMN_SINGER + " TEXT "
+                + COLUMN_YEAR + " INTEGER "
+                + COLUMN_STARS + " INTEGER ) ";
         db.execSQL(createNoteTableSql);
 
 
@@ -58,7 +58,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Log.d("SQL Insert",""+ result); //id returned, shouldn’t be -1
         return result;
     }
-    public ArrayList<String> getAllNotes() {
+    public ArrayList<String> getAllSongs() {
         ArrayList<String> songs = new ArrayList<String>();
 
         String selectQuery = "SELECT " + COLUMN_ID + ","
@@ -98,7 +98,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return result;
     }
     // Filtered Selection
-    public ArrayList<Song> getAllNotes(String keyword) {
+    public ArrayList<Song> getAllSongs(String keyword) {
         ArrayList<Song> notes = new ArrayList<Song>();
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -111,8 +111,8 @@ public class DBHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 int id = cursor.getInt(0);
-                String noteContent = cursor.getString(1);
-                Song note = new Song(id, noteContent);
+                String songContent = cursor.getString(1);
+                Song note = new Song(id, songContent);
                 notes.add(note);
             } while (cursor.moveToNext());
         }

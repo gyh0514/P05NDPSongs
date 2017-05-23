@@ -99,7 +99,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
     // Filtered Selection
     public ArrayList<Song> getAllNotes(String keyword) {
-        ArrayList<Song> notes = new ArrayList<Note>();
+        ArrayList<Song> notes = new ArrayList<Song>();
 
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns= {COLUMN_ID, COLUMN_TITLE};

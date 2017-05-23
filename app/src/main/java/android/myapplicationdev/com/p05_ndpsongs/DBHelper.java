@@ -80,7 +80,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 int year = cursor.getInt(3);
                 int star = cursor.getInt(4);
                 //songs.add("ID:" + id + ", " + content);
-                Song song = new Song(title, singers, year, star);
+                Song song = new Song(id, title, singers, year, star);
                 songs.add(song);
             } while (cursor.moveToNext());
         }
@@ -113,8 +113,8 @@ public class DBHelper extends SQLiteOpenHelper {
         ArrayList<Song> songs = new ArrayList<Song>();
 
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] columns= {COLUMN_ID, COLUMN_TITLE};
-        String condition = COLUMN_TITLE + " Like ?";
+        String[] columns= {COLUMN_ID, COLUMN_TITLE, COLUMN_SINGER, COLUMN_YEAR, COLUMN_STARS};
+        String condition = COLUMN_STARS + " Like ?";
         String[] args = { "%" +  keyword + "%"};
         Cursor cursor = db.query(TABLE_SONG, columns, condition, args,
                 null, null, null, null);
@@ -126,7 +126,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 String singer = cursor.getString(2);
                 int year = cursor.getInt(3);
                 int stars = cursor.getInt(4);
-                Song song = new Song(title, singer, year ,stars);
+                Song song = new Song(id, title, singer, year ,stars);
                 songs.add(song);
             } while (cursor.moveToNext());
         }

@@ -40,7 +40,8 @@ public class EditActivity extends AppCompatActivity {
         editSinger.setText(data.getSingers());
         editTitle.setText(data.getTitle());
         editYear.setText(data.getYear()+"");
-        
+
+
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override

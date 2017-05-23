@@ -35,6 +35,18 @@ public class SecondActivity extends AppCompatActivity {
         lv.setAdapter(aa);
 
 
+        btn5stars.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DBHelper dbh = new DBHelper(SecondActivity.this);
+                al.clear();
+                al.addAll(dbh.getAllSongsFiltered("5"));
+                dbh.close();
+                aa.notifyDataSetChanged();
+            }
+        });
+
+
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -44,17 +56,9 @@ public class SecondActivity extends AppCompatActivity {
                         EditActivity.class);
                 al = new ArrayList<Song>();
                 al.addAll(dbh.getAllSongs());
-                Song data1 = al.get(position);
+                Song data = al.get(position);
 
-
-//                String data = al.get(position);
-                //String id = data.split(",")[0].split(":")[1];
-                //String title = data.split(",")[1].trim();
-                //String title =
-               // String title = data.
-
-                //Song target = new Song(title, singers, year, star);
-                i.putExtra("data", data1);
+                i.putExtra("data", data);
                 startActivityForResult(i, 9);
             }
         });
@@ -67,6 +71,11 @@ public class SecondActivity extends AppCompatActivity {
 
         if (resultCode == RESULT_OK && requestCode == 9){
             //btnRetrieve.performClick();
+            //DBHelper dbh = new DBHelper(SecondActivity.this);
+            //al.clear();
+            //al.addAll(dbh.getAllSongs());
+            //dbh.close();
+            //aa.notifyDataSetChanged();
         }
     }
 }

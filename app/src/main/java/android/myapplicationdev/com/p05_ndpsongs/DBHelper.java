@@ -30,10 +30,10 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createNoteTableSql = "CREATE TABLE " + TABLE_SONG + "("
-                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + COLUMN_TITLE + " TEXT,"
-                + COLUMN_SINGER + " TEXT,"
-                + COLUMN_YEAR + " INTEGER,"
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COLUMN_TITLE + " TEXT, "
+                + COLUMN_SINGER + " TEXT, "
+                + COLUMN_YEAR + " INTEGER, "
                 + COLUMN_STARS + " INTEGER ) ";
         db.execSQL(createNoteTableSql);
 
@@ -46,16 +46,19 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public long insertSong(String noteContent) {
+    public long insertSong(String title, String singer, int year, int stars) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_TITLE, noteContent);
-        values.put(COLUMN_SINGER, noteContent);
-        values.put(COLUMN_YEAR, noteContent);
-        values.put(COLUMN_STARS, noteContent);
+        values.put(COLUMN_TITLE, title);
+        values.put(COLUMN_SINGER, singer);
+        values.put(COLUMN_YEAR, year);
+        values.put(COLUMN_STARS, stars);
         long result = db.insert(TABLE_SONG, null, values);
+        if (result == -1) {
+            Log.d("DBHelper", "Insert failed");
+        }
         db.close();
-        Log.d("SQL Insert",""+ result); //id returned, shouldn’t be -1
+        Log.d("SQL Insert", "" + result); //id returned, shouldn’t be -1
         return result;
     }
     public ArrayList<String> getAllSongs() {

@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("P05-NDPSongs ~ Insert Song");
+
         etTitle = (EditText) findViewById(R.id.etTitle);
         etSinger = (EditText) findViewById(R.id.etSinger);
         etYear = (EditText) findViewById(R.id.etYear);

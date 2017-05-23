@@ -22,6 +22,7 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
+        setTitle("P05-NDPSongs ~ Show Song");
         lv = (ListView)findViewById(R.id.lv);
         btn5stars = (Button)findViewById(R.id.btn5stars);
         //al = new ArrayList<String>();

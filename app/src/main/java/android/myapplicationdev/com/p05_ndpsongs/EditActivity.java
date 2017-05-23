@@ -23,6 +23,7 @@ public class EditActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
+        setTitle("P05-NDPSongs ~ Modify Song");
 
         id = (TextView) findViewById(R.id.id);
         btnEdit = (Button) findViewById(R.id.btnUpdate);

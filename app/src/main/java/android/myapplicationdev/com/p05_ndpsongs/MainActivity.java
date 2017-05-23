@@ -1,5 +1,6 @@
 package android.myapplicationdev.com.p05_ndpsongs;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -31,7 +32,10 @@ public class MainActivity extends AppCompatActivity {
         btnShowList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this,
+                        SecondActivity.class);
 
+                startActivity(i);
             }
         });
         btnInsert.setOnClickListener(new View.OnClickListener() {

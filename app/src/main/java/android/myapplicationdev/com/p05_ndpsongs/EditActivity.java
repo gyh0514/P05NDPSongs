@@ -8,19 +8,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class EditActivity extends AppCompatActivity {
 
     Button btnDelete,btnEdit,btnCancel;
     Song data;
     EditText editTitle,editSinger,editYear;
+    TextView id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
-
+        id = (TextView) findViewById(R.id.id);
         btnEdit = (Button) findViewById(R.id.btnUpdate);
         btnDelete = (Button) findViewById(R.id.btnDelete);
         btnCancel = (Button) findViewById(R.id.btnCancel);
@@ -32,6 +36,10 @@ public class EditActivity extends AppCompatActivity {
         Intent i = getIntent();
         data = (Song) i.getSerializableExtra("data");
 
+        editSinger.setText(data.getSingers());
+        editTitle.setText(data.getTitle());
+        editYear.setText(data.getYear());
+        
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override

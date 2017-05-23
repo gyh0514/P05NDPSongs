@@ -15,7 +15,7 @@ public class SecondActivity extends AppCompatActivity {
     Button btn5stars;
     ListView lv;
     SongAdapter aa;
-    //ArrayList<String> al;
+    ArrayList<Song> al;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +28,10 @@ public class SecondActivity extends AppCompatActivity {
 
 
         final DBHelper dbh = new DBHelper(SecondActivity.this);
-        ArrayList<Song> songs = dbh.getAllSongs();
+        al = dbh.getAllSongs();
         
 
-        aa = new SongAdapter(this, R.layout.row, songs);
+        aa = new SongAdapter(this, R.layout.row, al);
         lv.setAdapter(aa);
 
 
@@ -42,9 +42,9 @@ public class SecondActivity extends AppCompatActivity {
                     position, long identity) {
                 Intent i = new Intent(SecondActivity.this,
                         EditActivity.class);
-                ArrayList<Song> al1 = new ArrayList<Song>();
-                al1.addAll(dbh.getAllSongs());
-                Song data1 = al1.get(position);
+                al = new ArrayList<Song>();
+                al.addAll(dbh.getAllSongs());
+                Song data1 = al.get(position);
 
 
 //                String data = al.get(position);
